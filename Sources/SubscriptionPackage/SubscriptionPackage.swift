@@ -11,7 +11,7 @@
 import SwiftUI
 import StoreKit
 
-struct SubscriptionGrid: View {
+private struct SubscriptionGrid: View {
         
     @State private var totalSize: CGSize = .zero
         
@@ -51,7 +51,7 @@ struct SubscriptionGrid: View {
     }
 }
 
-struct SubscriptionView: View {
+private struct SubscriptionView: View {
     
     var points: [SubscriptionPoint]
     
@@ -214,13 +214,13 @@ struct ProductWrapper: Identifiable, Hashable {
     }
 }
 
-struct SubscriptionPoint: Identifiable {
+public struct SubscriptionPoint: Identifiable {
     
     enum PointType: Int {
         case singleSymbol, symbols, image, color, blobs
     }
     
-    var id: String {
+    public var id: String {
         return title
     }
     
@@ -287,7 +287,7 @@ struct SubscriptionPoint: Identifiable {
     
 }
 
-struct SubscriptionCard: View {
+private struct SubscriptionCard: View {
     
     var point: SubscriptionPoint
     
@@ -374,7 +374,7 @@ struct SubscriptionCard: View {
     
 }
 
-struct GeometryHandlerViewModifier: ViewModifier {
+private struct GeometryHandlerViewModifier: ViewModifier {
     
     @Binding var size: CGSize
     
@@ -444,7 +444,7 @@ struct SubscriptionViewModifier: ViewModifier {
     }
 }
 
-extension View {
+public extension View {
     
     func subscription(
         isSubscribed: Binding<Bool>,
@@ -460,7 +460,7 @@ extension View {
     }
 }
 
-class Store: ObservableObject {
+private class Store: ObservableObject {
     
     static var shared = Store(identifiers: [""])
 
