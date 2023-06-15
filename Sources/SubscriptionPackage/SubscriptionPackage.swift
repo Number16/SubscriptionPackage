@@ -9,6 +9,7 @@
 //
 
 import SwiftUI
+import UIKit
 import StoreKit
 
 private struct SubscriptionGrid: View {
@@ -908,8 +909,6 @@ extension MenuStyle where Self == CircularMenuStyle {
 //  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 //  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import SwiftUI
-
 /// A variable blur view.
 public class VariableBlurUIView: UIVisualEffectView {
     public init(
@@ -1242,8 +1241,6 @@ public enum VariableBlurViewConstants {
 //
 //  Created by Alexey Primechaev on 29.05.2023.
 //
-
-import SwiftUI
 
 func * (left: CGSize, right: CGFloat) -> CGSize {
     return CGSize(width: left.width * right, height: left.height * right)
