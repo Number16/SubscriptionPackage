@@ -418,12 +418,13 @@ struct SubscriptionViewModifier: ViewModifier {
     
     @StateObject private var store: Store = Store.shared
     
-    @State private var showingSheet: Bool = false
+    @Binding var showingSheet: Bool
     
     private var subscriptionPoints: [SubscriptionPoint] = []
     
-    init(isSubscribed: Binding<Bool>, products: Set<String>, subscriptionPoints: [SubscriptionPoint]) {
+    init(showingSheet: Binding<Bool>, isSubscribed: Binding<Bool>, products: Set<String>, subscriptionPoints: [SubscriptionPoint]) {
         self._isSubscribed = isSubscribed
+        self._showingSheet = showingSheet
         _store = StateObject(wrappedValue: Store(identifiers: products))
         self.subscriptionPoints = subscriptionPoints
     }
@@ -448,6 +449,7 @@ struct SubscriptionViewModifier: ViewModifier {
 public extension View {
     
     func subscription(
+        showingSheet: Binding<Bool>,
         isSubscribed: Binding<Bool>,
         products: Set<String>,
         subscriptionPoint0: SubscriptionPoint,
@@ -457,7 +459,7 @@ public extension View {
         subscriptionPoint4: SubscriptionPoint,
         subscriptionPoint5: SubscriptionPoint
     ) -> some View {
-        modifier(SubscriptionViewModifier(isSubscribed: isSubscribed, products: products, subscriptionPoints: [subscriptionPoint0, subscriptionPoint1, subscriptionPoint2, subscriptionPoint3, subscriptionPoint4, subscriptionPoint5]))
+        modifier(SubscriptionViewModifier(showingSheet: showingSheet, isSubscribed: isSubscribed, products: products, subscriptionPoints: [subscriptionPoint0, subscriptionPoint1, subscriptionPoint2, subscriptionPoint3, subscriptionPoint4, subscriptionPoint5]))
     }
 }
 
